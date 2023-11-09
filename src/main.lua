@@ -9,12 +9,14 @@ import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
 import "player"
+import "enemy"
 
 --- Potential performance inprovement with const
 --- local because lua is weird and everything is in global scope without it :/
-local pd <const> = playdate;
-local gfx <const> = pd.graphics;
-local player <const> = Player(30, 120);
+local pd <const> = playdate
+local gfx <const> = pd.graphics
+local player <const> = Player(30, 120)
+local enemy <const> = Enemy(370, 120)
 
 function playdate.update()
    --- Main Game Loop
