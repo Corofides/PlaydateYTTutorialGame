@@ -11,20 +11,27 @@ import "CoreLibs/timer"
 import "player"
 import "enemySpawner"
 import "scoreDisplay"
+import "screenShake"
 
 --- Potential performance inprovement with const
 --- local because lua is weird and everything is in global scope without it :/
 local pd <const> = playdate
 local gfx <const> = pd.graphics
 local player <const> = Player(30, 120)
+local screenShakeSprite = ScreenShake()
 createScoreDisplay();
 startSpawner()
+
+function setShakeAmount(amount)
+   screenShakeSprite:setShakeAmount(amount)
+end
 
 function resetGame()
    resetScore()
    clearEnemies()
    stopSpawner()
    startSpawner()
+   setShakeAmount(10)
 end
 
 function playdate.update()
