@@ -10,12 +10,14 @@ import "CoreLibs/sprites"
 import "CoreLibs/timer"
 import "player"
 import "enemySpawner"
+import "scoreDisplay"
 
 --- Potential performance inprovement with const
 --- local because lua is weird and everything is in global scope without it :/
 local pd <const> = playdate
 local gfx <const> = pd.graphics
 local player <const> = Player(30, 120)
+createScoreDisplay();
 startSpawner()
 
 function playdate.update()
