@@ -4,6 +4,8 @@
 --- DateTime: 09/11/2023 17:57
 ---
 
+import "bullet"
+
 local pd <const> = playdate;
 local gfx <const> = pd.graphics;
 
@@ -26,6 +28,8 @@ end
 
 --- Remember to use colons, James, this isn't even different
 function Player:update()
+
+    --- TODO: Task for self, add collision detection to this.
     if (pd.buttonIsPressed(pd.kButtonUp)) then
         if (self.y > (0 + playerSize / 2)) then
             self:moveBy(0, -moveDistance)
@@ -36,5 +40,9 @@ function Player:update()
         if (self.y < (240 - playerSize / 2)) then
             self:moveBy(0, moveDistance)
         end
+    end
+
+    if (pd.buttonJustPressed(pd.kButtonA)) then
+        Bullet(self.x + (self:getSize() / 2), self.y, 5)
     end
 end
