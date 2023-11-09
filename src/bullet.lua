@@ -46,5 +46,7 @@ function Bullet:update()
             end
         end
         self:remove()
+    elseif actualX > 400 then
+        self:remove()
     end
 end
