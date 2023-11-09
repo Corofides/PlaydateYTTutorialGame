@@ -8,7 +8,22 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
+import "player"
+
+--- Potential performance inprovement with const
+--- local because lua is weird and everything is in global scope without it :/
+local pd <const> = playdate;
+local gfx <const> = pd.graphics;
+local player <const> = Player(140, 50);
 
 function playdate.update()
    --- Main Game Loop
+
+   --- update all sprites
+   gfx.sprite.update()
+
+   --- update all timers
+   pd.timer.updateTimers()
+
+
 end
