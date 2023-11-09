@@ -20,6 +20,13 @@ local player <const> = Player(30, 120)
 createScoreDisplay();
 startSpawner()
 
+function resetGame()
+   resetScore()
+   clearEnemies()
+   stopSpawner()
+   startSpawner()
+end
+
 function playdate.update()
    --- Main Game Loop
 
