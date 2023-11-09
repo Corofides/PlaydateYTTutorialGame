@@ -7,6 +7,10 @@
 local pd <const> = playdate;
 local gfx <const> = pd.graphics;
 
+--- Add const because I can.
+local moveDistance <const> = 3;
+local playerSize <const> = 32;
+
 class('Player').extends(gfx.sprite)
 
 --- I'm assuming this is just a table with the function being added but...
@@ -18,4 +22,19 @@ function Player:init(x, y)
 
     --- add player to draw list
     self:add()
+end
+
+--- Remember to use colons, James, this isn't even different
+function Player:update()
+    if (pd.buttonIsPressed(pd.kButtonUp)) then
+        if (self.y > (0 + playerSize / 2)) then
+            self:moveBy(0, -moveDistance)
+        end
+    end
+
+    if (pd.buttonIsPressed(pd.kButtonDown)) then
+        if (self.y < (240 - playerSize / 2)) then
+            self:moveBy(0, moveDistance)
+        end
+    end
 end

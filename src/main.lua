@@ -14,7 +14,7 @@ import "player"
 --- local because lua is weird and everything is in global scope without it :/
 local pd <const> = playdate;
 local gfx <const> = pd.graphics;
-local player <const> = Player(140, 50);
+local player <const> = Player(30, 120);
 
 function playdate.update()
    --- Main Game Loop
