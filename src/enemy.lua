@@ -7,24 +7,25 @@
 local pd <const> = playdate
 local gfx <const> = pd.graphics
 
-local moveDistance = 3;
-
 class("Enemy").extends(gfx.sprite);
 
-function Enemy:init(x, y)
+function Enemy:init(x, y, moveSpeed)
     local enemyImage = gfx.image.new("images/goblin")
     self:setImage(enemyImage)
 
     self:setCollideRect(0, 0, self:getSize())
 
+    self.moveSpeed = moveSpeed
     self:moveTo(x, y)
     self:add()
 end
 
 
 function Enemy:update()
-
     --- this colon thing is really annoying.
-    self:moveBy(-moveDistance, 0)
+    self:moveBy(-self.moveSpeed, 0)
+end
 
+function Enemy:collisionResponse()
+    return "overlap"
 end

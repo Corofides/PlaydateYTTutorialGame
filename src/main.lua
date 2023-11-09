@@ -16,7 +16,7 @@ import "enemy"
 local pd <const> = playdate
 local gfx <const> = pd.graphics
 local player <const> = Player(30, 120)
-local enemy <const> = Enemy(370, 120)
+Enemy(370, 120, 1)
 
 function playdate.update()
    --- Main Game Loop

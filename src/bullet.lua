@@ -34,6 +34,17 @@ end
 
 function Bullet:update()
 
-    self:moveWithCollisions(self.x + self.speed, self.y);
+    --- So what happens first? I add curly braces in lua or start forgetting to add them
+    --- in js?
+    local actualX, actualY, collisions, length = self:moveWithCollisions(self.x + self.speed, self.y);
 
+    if (length > 0) then
+        for i, collision in pairs(collisions) do
+            local collidedObject = collision["other"]
+            if collidedObject:isa(Enemy) then
+                collidedObject:remove()
+            end
+        end
+        self:remove()
+    end
 end
