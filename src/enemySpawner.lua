@@ -16,7 +16,7 @@ function startSpawner()
 end
 
 function createTimer()
-    local spawnTime = math.random(500, 1000)
+    local spawnTime = math.random(1000, 1500)
     spawnTimer = pd.timer.performAfterDelay(spawnTime, function ()
         createTimer()
         spawnEnemy()
@@ -26,7 +26,8 @@ end
 
 function spawnEnemy()
     local spawnPosition = math.random(10, 230)
-    Enemy(430, spawnPosition, 1)
+    local health <const> = math.random(1, 3)
+    Enemy(430, spawnPosition, 1, health)
 end
 
 function stopSpawner()

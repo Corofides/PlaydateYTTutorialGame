@@ -10,8 +10,10 @@ local pd <const> = playdate;
 local gfx <const> = pd.graphics;
 
 --- Add const because I can.
-local moveDistance <const> = 3;
-local playerSize <const> = 32;
+local moveDistance <const> = 2
+local playerSize <const> = 32
+local coolDown <const> = 0.5
+local shootTimer;
 
 class('Player').extends(gfx.sprite)
 
@@ -21,6 +23,7 @@ function Player:init(x, y)
     local playerImage = gfx.image.new("images/player")
     self:setImage(playerImage)
     self:moveTo(x, y)
+    self.allowShoot = true;
 
     --- add player to draw list
     self:add()
@@ -42,7 +45,13 @@ function Player:update()
         end
     end
 
-    if (pd.buttonJustPressed(pd.kButtonA)) then
+    if (pd.buttonJustPressed(pd.kButtonA) and self.allowShoot) then
         Bullet(self.x + (self:getSize() / 2), self.y, 5)
+        self.allowShoot = false;
+
+        shootTimer = pd.timer.performAfterDelay(coolDown * 1000, function()
+            self.allowShoot = true;
+        end)
+
     end
 end

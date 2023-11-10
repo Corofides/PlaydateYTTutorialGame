@@ -9,12 +9,13 @@ local gfx <const> = pd.graphics
 
 class("Enemy").extends(gfx.sprite);
 
-function Enemy:init(x, y, moveSpeed)
+function Enemy:init(x, y, moveSpeed, health)
     local enemyImage = gfx.image.new("images/goblin")
     self:setImage(enemyImage)
 
     self:setCollideRect(0, 0, self:getSize())
 
+    self.health = health
     self.moveSpeed = moveSpeed
     self:moveTo(x, y)
     self:add()
