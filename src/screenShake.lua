@@ -23,7 +23,7 @@ function ScreenShake:update()
         local shakeAngle = math.random() * math.pi * 2;
         local shakeX = math.floor(math.cos(shakeAngle))*self.shakeAmount
         local shakeY = math.floor(math.sin(shakeAngle))*self.shakeAmount
-        self.shakeAmount -= 1;
+        self.shakeAmount = self.shakeAmount - 1;
         pd.display.setOffset(shakeX, shakeY)
     else
         pd.display.setOffset(0, 0)

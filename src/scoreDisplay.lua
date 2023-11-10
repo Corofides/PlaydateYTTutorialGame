@@ -34,7 +34,7 @@ function updateDisplay()
 end
 
 function incrementScore()
-    score += 1 --- no ++ for me :(
+    score = score + 1 --- no ++ for me :(
     updateDisplay()
 end
 
